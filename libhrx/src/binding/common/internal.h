@@ -2386,6 +2386,12 @@ iree_status_t iree_hal_streaming_memory_free_host(
     iree_hal_streaming_context_t* context, void* ptr);
 
 // Synchronization: none; called during context destruction after streams idle.
+// Returns IREE_HAL_COMMAND_BUFFER_MODE_RETAIN_PROFILE_METADATA while an
+// HRX_PROFILE_STATS session is active; the HAL only attributes dispatch events
+// to command buffers created with it.
+iree_hal_command_buffer_mode_t iree_hal_streaming_profile_command_buffer_mode(
+    void);
+
 void iree_hal_streaming_memory_release_pageable_staging(
     iree_hal_streaming_context_t* context);
 
